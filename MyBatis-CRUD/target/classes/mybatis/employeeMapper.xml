@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gervkuete.mappers.EmployeeMapper">
+
+	<resultMap type="Employee" id="result">
+		<id column="employee_id" property="id" />
+		<result column="firstname" property="firstName" />
+		<result column="lastname" property="lastName" />
+		<result column="email" property="email" />
+		<result column="phonenumber" property="phoneNumber" />
+	</resultMap>
+
+	<select id="loadEmployees" resultMap="result">
+		select * from employee
+	</select>
+
+	<select id="findEmployeebyId" parameterType="int"
+		resultType="Employee" resultMap="result">
+		select * from employee where
+		employee_id = #{id}
+	</select>
+	
+	<insert id="createEmployee" parameterType="Employee" useGeneratedKeys="true"
+		keyProperty="id">
+		insert into employee
+		(firstname,lastname,email,phonenumber)
+		values
+		(#{firstName},#{lastName},#{email},#{phoneNumber})
+	</insert>
+
+	<update id="updateEmployee" parameterType="int">
+		update employee set
+		firstname = #{firstName},
+		lastnamehbh= #{lastName},
+		email = #{email},
+		phonenumber = #{phoneNumber}
+		where
+		employee_id = #{id}
+	</update>
+
+	<delete id="deleteEmployee">
+		delete from employee where employee_id = #{id}
+	</delete>
+
+
+</mapper>

@@ -6,19 +6,21 @@ public class Employee implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private Integer id;
+	private Integer employee_id;
 	private String firstName;
 	private String lastName;
 	private String email;
 	private String phoneNumber;
 	
+	public Employee() {}
+	
 	// Getters and setters
 	public int getId() {
-		return id;
+		return employee_id;
 	}
 	
-	public void setId(Integer id) {
-		this.id = id;
+	public void setId(Integer employee_id) {
+		this.employee_id = employee_id;
 	}
 	
 	public String getFirstName() {
@@ -55,7 +57,7 @@ public class Employee implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+		return "Employee [employee_id=" + employee_id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", phoneNumber=" + phoneNumber + "]";
 	}
 	

@@ -1,14 +1,35 @@
 package com.gervkuete.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
+import java.util.List;
 
-@Controller
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.gervkuete.employeeService.EmployeeService;
+import com.gervkuete.model.Employee;
+
+
+@RestController
 public class EmployeeController {
 	
-	private Logger logger = LoggerFactory.getLogger(EmployeeController.class);
-	//logger.info("Inside controller");
+	@Autowired
+	private EmployeeService employeeService;
+	
+	@GetMapping("/loadEmployees")
+	public List<Employee> showListOfEmployees() {
+		System.out.println("Inside get");
+		System.out.println(employeeService.getAllEmployees());
+		return employeeService.getAllEmployees();
+	}
+	
+	@PostMapping("/deleteEmployee")
+	public void deleteEmployee(@RequestParam("id") Integer id) {
+		employeeService.deleteEmployee(id);
+		//return employeeService.getAllEmployees();
+	}
 	
 
 }

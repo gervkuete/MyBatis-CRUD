@@ -3,10 +3,6 @@
 	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-
-	<typeAliases>
-		<typeAlias alias="Employee" type="com.gervkuete.model.Employee" />
-	</typeAliases>
 	
 	<mappers>
 		<mapper resource="mybatis/employeeMapper.xml"/>
